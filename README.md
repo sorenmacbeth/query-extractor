@@ -6,6 +6,10 @@ searches. If it doesn't please let me know so the library can improve.
 
 ## Usage
 
+for leiningen: 
+
+[query-extractor "0.0.1-SNAPSHOT"]
+
 An example REPL session:
 
     => (use 'query-extractor.core)
