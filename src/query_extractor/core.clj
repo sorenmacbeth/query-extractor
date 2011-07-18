@@ -24,11 +24,12 @@
                   (query-key params-map)))))
 
 (defn query-type [^URI ref-uri]
-  (some (fn [[re t]]
+  (when-not (nil? (.getHost ref-uri))
+    (some (fn [[re t]]
           (let [engine (.getHost ref-uri)]
             (and (not (nil? (re-seq re engine)))
                  t)))
-        @engine-re))
+        @engine-re)))
 
 (defmulti handle-engine query-type)
 

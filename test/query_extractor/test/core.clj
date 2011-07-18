@@ -15,3 +15,9 @@
                "http://search.yahoo.com/search;_ylt=ArsdL6su1Uh4YCFQvqwY8tCbvZx4?p=a+test+search&toggle=1&cop=mss&ei=UTF-8&fr=yfp-t-701"]]
     (doall (map #(is (= want (extract %))) tests))))
 
+(deftest test-nils
+  (let [want nil
+        tests [""
+               "http://no-params.com"]]
+    (doall (map #(is (= want (extract %))) tests))))
+
