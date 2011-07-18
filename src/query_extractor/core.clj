@@ -8,13 +8,13 @@
          #".*\.?(yahoo)\.[^/]+" :yahoo 
          #".*\.?(bing)\.[^/]+" :bing }))
 
-(defn- params->map [params]
+(defn params->map [params]
   (->> (su/re-split #"&" params) 
      (map #(su/re-split #"=" %))
      (map (fn [[k v]] [(keyword k) v])) 
      (into {})))
 
-(defn- extract-query [^URI ref-uri query-key]
+(defn extract-query [^URI ref-uri query-key]
   (let [params (.getQuery ref-uri)
         params-map (when-not (nil? params)
                      (params->map params))]
@@ -40,6 +40,9 @@
 
 (defmethod handle-engine :yahoo
   [uri] (extract-query uri :p))
+
+(defmethod handle-engine nil
+  [uri] nil)
 
 (defn extract [referrer]
   (handle-engine (URI. (norm/canonicalize-url referrer))))
