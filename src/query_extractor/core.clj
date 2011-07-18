@@ -18,7 +18,7 @@
   (let [params (.getQuery ref-uri)
         params-map (when-not (nil? params)
                      (params->map params))]
-    (when-not (nil? params-map)
+    (when-not (nil? (query-key params-map))
       (su/re-gsub #"\+"
                   " "
                   (query-key params-map)))))

@@ -18,6 +18,7 @@
 (deftest test-nils
   (let [want nil
         tests [""
-               "http://no-params.com"]]
+               "http://no-params.com"
+               "http://www.google.com/?x=foo"]]
     (doall (map #(is (= want (extract %))) tests))))
 
