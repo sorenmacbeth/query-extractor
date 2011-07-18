@@ -8,7 +8,7 @@ searches. If it doesn't please let me know so the library can improve.
 
 for leiningen: 
 
-`[query-extractor "0.0.1-SNAPSHOT"]`
+    [query-extractor "0.0.2-SNAPSHOT"]
 
 An example REPL session:
 
