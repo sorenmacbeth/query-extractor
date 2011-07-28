@@ -6,7 +6,12 @@
 (def engine-re
   (atom {#".*\.?(google)\.[^/]+" :google 
          #".*\.?(yahoo)\.[^/]+" :yahoo 
-         #".*\.?(bing)\.[^/]+" :bing }))
+         #".*\.?(bing)\.[^/]+" :bing
+         #".*\.?(yandex).[^/]+" :yandex
+         #".*\.?(ask).[^/]+" :ask
+         #".*\.?(search).[^/]+" :search
+         #".*\.?(baidu).[^/]+" :baidu
+         #".*\.?(aol).[^/]+" :aol}))
 
 (defn params->map [params]
   (->> (su/re-split #"&" params) 
@@ -41,6 +46,21 @@
 
 (defmethod handle-engine :yahoo
   [uri] (extract-query uri :p))
+
+(defmethod handle-engine :yandex
+  [uri] (extract-query uri :text))
+
+(defmethod handle-engine :ask
+  [uri] (extract-query uri :q))
+
+(defmethod handle-engine :search
+  [uri] (extract-query uri :q))
+
+(defmethod handle-engine :baidu
+  [uri] (extract-query uri :wd))
+
+(defmethod handle-engine :aol
+  [uri] (extract-query uri :q))
 
 (defmethod handle-engine nil
   [uri] nil)
