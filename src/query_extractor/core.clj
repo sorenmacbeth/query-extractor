@@ -1,5 +1,4 @@
 (ns query-extractor.core
-  (:require [url-normalizer.core :as norm])
   (:require [clojure.string :as s])
   (:import java.net.URI))
 
@@ -65,5 +64,5 @@
   [uri] nil)
 
 (defn extract [referrer]
-  (handle-engine (URI. (norm/canonicalize-url referrer))))
+  (handle-engine (URI. referrer)))
 
