@@ -2,6 +2,15 @@
   (:require [clojure.string :as s])
   (:import java.net.URI))
 
+(defmacro ^:private def-many-methods
+  "Create multiple multimethods with different 
+   dispatch values but the same implementation"
+  [name dispatch-vals args & body]
+  (let [methods (for [dval dispatch-vals]
+                 `(defmethod ~name ~dval ~args
+                    ~@body))]
+  `(do ~@methods)))
+
 (defn- params->map [params]
   (into {}
     (for [p (s/split params #"&") 
@@ -27,10 +36,7 @@
 
 (defmulti ^:private handle-engine query-type)
 
-(defmethod handle-engine :google [uri] 
-  (extract-query uri :q))
-
-(defmethod handle-engine :bing [uri] 
+(def-many-methods handle-engine [:google :bing :ask :search :aol] [uri] 
   (extract-query uri :q))
 
 (defmethod handle-engine :yahoo [uri] 
@@ -39,21 +45,11 @@
 (defmethod handle-engine :yandex [uri] 
   (extract-query uri :text))
 
-(defmethod handle-engine :ask [uri] 
-  (extract-query uri :q))
-
-(defmethod handle-engine :search [uri] 
-  (extract-query uri :q))
-
 (defmethod handle-engine :baidu [uri] 
   (extract-query uri :wd))
-
-(defmethod handle-engine :aol [uri] 
-  (extract-query uri :q))
 
 (defmethod handle-engine nil [uri] 
   nil)
 
 (defn extract [referrer]
   (handle-engine (URI. referrer)))
-
