@@ -52,4 +52,7 @@
   nil)
 
 (defn extract [referrer]
-  (handle-engine (URI. referrer)))
+  (handle-engine (try
+                   (URI. referrer)
+                   (catch Exception e nil))))
+
