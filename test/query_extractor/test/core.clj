@@ -28,3 +28,10 @@
     "http://no-params.com"
     "http://www.google.com/?x=foo")
 
+(tabular
+ "invalid urls"
+ (fact (extract url) => nil)
+
+ url
+ "htt ://blah.123  /fo")
+

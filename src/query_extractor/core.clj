@@ -52,7 +52,6 @@
   nil)
 
 (defn extract [referrer]
-  (handle-engine (try
-                   (URI. referrer)
-                   (catch Exception e nil))))
+  (when-let [uri (try (URI. referrer) (catch Exception e nil))]
+    (handle-engine uri)))
 
