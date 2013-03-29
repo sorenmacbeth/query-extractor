@@ -1,5 +1,7 @@
 # query-extractor
 
+[![Build Status](https://secure.travis-ci.org/sorenmacbeth/query-extractor.png?branch=master)](http://travis-ci.org/sorenmacbeth/query-extractor)
+
 A very small library for extracting a search query string given a
 referrer address. It should work for Yahoo, Google, and Bing
 searches. If it doesn't please let me know so the library can improve.
@@ -8,7 +10,7 @@ searches. If it doesn't please let me know so the library can improve.
 
 for leiningen: 
 
-    [query-extractor "0.0.8"]
+    [query-extractor "0.0.9"]
 
 An example REPL session:
 
