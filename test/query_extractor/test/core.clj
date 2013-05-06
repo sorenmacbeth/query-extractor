@@ -18,7 +18,14 @@
     "http://www.ask.com/web?q=a+test+search&search=&qsrc=0&o=0&l=dir"
     "http://www.search.com/search?q=a+test+search"
     "http://www.baidu.com/s?wd=a+test+search&rsv_bp=0&inputT=5124"
-    "http://search.aol.com/aol/search?enabled_terms=&s_it=comsearch50&q=a+test+search"  )
+    "http://search.aol.com/aol/search?enabled_terms=&s_it=comsearch50&q=a+test+search"
+    "http://searchresults.verizon.com/search/?context=search&tab=Web&q=a+test+search"
+    "http://www.webcrawler.com/info.wbcrwl.301.3/search/web?q=a+test+search&cid=142006173"
+    "http://www.mysearchresults.com/search?c=2632&t=01&q=a+test+search"
+    "http://search.comcast.net/?cat=web&con=betac&q=a+test+search"
+    "http://search.mywebsearch.com/mywebsearch/GGmain.jhtml?id=Z7xdm417YYus&st=bar&n=77ee6684&searchfor=a+test+search"
+    "http://www2.inbox.com/search/results.aspx?q=a+test+search"
+    "http://www.dogpile.com/info.dogpl/search/web?q=a+test+search&fcoid=300&")
 
 (tabular "urls with no query to extract" 
   (fact (extract url) => nil)
