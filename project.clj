@@ -1,4 +1,4 @@
-(defproject query-extractor "0.1.0-SNAPSHOT"
+(defproject query-extractor "0.1.0"
   :description "A library for extracting search query strings for HTTP referrer strings"
   :url "http://github.com/sorenmacbeth/query-extractor"
   :min-lein-version "2.0.0"
